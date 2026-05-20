@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Library — Jose's curated design resources</title>
+<meta name="description" content="A curated library of UI/UX, product design and web design resources." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #f6f2ea;
+  --bg-elev: #fdfaf3;
+  --ink: #15130f;
+  --ink-soft: #5a564c;
+  --ink-faint: #908a7c;
+  --line: #e3dccd;
+  --accent: #b8421c;
+  --accent-soft: #b8421c1a;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+[data-theme="dark"] {
+  --bg: #0e0d0a;
+  --bg-elev: #161410;
+  --ink: #f1ece0;
+  --ink-soft: #a8a294;
+  --ink-faint: #6c6759;
+  --line: #2a2620;
+  --accent: #e8763d;
+  --accent-soft: #e8763d22;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Layout ---------- */
+
+.page {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
+
+@media (max-width: 860px) {
+  .page { grid-template-columns: 1fr; }
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  border-right: 1px solid var(--line);
+  padding: 48px 32px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+@media (max-width: 860px) {
+  .sidebar {
+    position: static;
+    height: auto;
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 32px 24px;
+  }
+}
+
+.brand {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 38px;
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.brand-sub {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  margin-bottom: 40px;
+}
+
+.search-wrap {
+  position: relative;
+  margin-bottom: 32px;
+}
+
+.search {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 14px;
+  padding: 10px 12px 10px 32px;
+  border: 1px solid var(--line);
+  background: var(--bg-elev);
+  color: var(--ink);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.search:focus { border-color: var(--accent); }
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-faint);
+  pointer-events: none;
+}
+
+.nav-label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  margin-bottom: 12px;
+}
+
+.nav { list-style: none; }
+
+.nav li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  transition: color .15s;
+  border-bottom: 1px dashed transparent;
+}
+
+.nav li:hover { color: var(--ink); }
+
+.nav li.active {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.nav .count {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  font-weight: 400;
+}
+
+.theme-toggle {
+  margin-top: 40px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  background: none;
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all .15s;
+  font-family: var(--mono);
+}
+
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-faint);
+}
+
+/* ---------- Main ---------- */
+
+.main {
+  padding: 80px 64px 120px;
+  max-width: 920px;
+}
+
+@media (max-width: 860px) {
+  .main { padding: 48px 24px 80px; }
+}
+
+.intro {
+  margin-bottom: 80px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.intro h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(48px, 7vw, 84px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  margin-bottom: 24px;
+}
+
+.intro h1 em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.intro p {
+  font-size: 17px;
+  color: var(--ink-soft);
+  max-width: 540px;
+  line-height: 1.5;
+}
+
+.intro .meta {
+  margin-top: 24px;
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+}
+
+/* ---------- Category section ---------- */
+
+.category {
+  margin-bottom: 80px;
+  scroll-margin-top: 32px;
+}
+
+.category-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.category-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.category-count {
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+}
+
+.category-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-bottom: 28px;
+  max-width: 560px;
+}
+
+/* ---------- Resource items ---------- */
+
+.resources {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  transition: padding-left .2s;
+  align-items: start;
+}
+
+.resource:hover {
+  padding-left: 8px;
+}
+
+.resource:hover .resource-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+.resource-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.resource-name {
+  font-family: var(--serif);
+  font-size: 22px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.resource-name em {
+  font-style: italic;
+}
+
+.resource-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.resource-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 4px;
+  flex-wrap: wrap;
+}
+
+.resource-host {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.02em;
+}
+
+.resource-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.resource-arrow {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--ink-faint);
+  transition: all .2s;
+  align-self: center;
+}
+
+/* ---------- Empty state ---------- */
+
+.empty {
+  padding: 24px 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-faint);
+  border-bottom: 1px dashed var(--line);
+}
+
+.empty::before {
+  content: "—  ";
+  font-style: normal;
+  color: var(--ink-faint);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  margin-top: 80px;
+  padding-top: 32px;
+  border-top: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- Scrollbar polish ---------- */
+
+.sidebar::-webkit-scrollbar { width: 6px; }
+.sidebar::-webkit-scrollbar-track { background: transparent; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--line); border-radius: 3px; }
+
+/* ---------- Search no-match ---------- */
+
+.no-results {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--ink-faint);
+  text-align: center;
+  padding: 80px 0;
+}
+
+/* ---------- Fade-in on load ---------- */
+
+.category {
+  animation: fadeIn .6s ease both;
+}
+.category:nth-child(1) { animation-delay: .05s; }
+.category:nth-child(2) { animation-delay: .1s; }
+.category:nth-child(3) { animation-delay: .15s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar">
+    <div class="brand">Library</div>
+    <div class="brand-sub">Jose · UI/UX · Product</div>
+
+    <div class="search-wrap">
+      <svg class="search-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/>
+        <path d="m21 21-4.3-4.3"/>
+      </svg>
+      <input type="text" class="search" id="search" placeholder="Buscar recursos…" />
+    </div>
+
+    <div class="nav-label">Categorías</div>
+    <ul class="nav" id="nav"></ul>
+
+    <button class="theme-toggle" id="themeToggle">◐ Cambiar tema</button>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <main class="main">
+
+    <section class="intro">
+      <h1>A curated <em>library</em> for design & product.</h1>
+      <p>Recursos cuidadosamente seleccionados para diseño de producto, UI/UX, design systems, front-end y desarrollo profesional. Una biblioteca viva que va creciendo.</p>
+      <div class="meta" id="totalMeta">Loading…</div>
+    </section>
+
+    <div id="categoriesContainer"></div>
+
+    <footer class="footer">
+      <div>© Jose · Personal library</div>
+      <div>Last updated · <span id="lastUpdated">2026</span></div>
+    </footer>
+
+  </main>
+
+</div>
+
+<script>
+/* ============================================================
+   DATA — Acá agregas tus recursos.
+   Estructura de cada recurso:
+   {
+     name: "Nombre del recurso",
+     url:  "https://...",
+     desc: "Descripción corta (1 línea)",
+     tag:  "free" | "paid" | "freemium" | "open-source"  (opcional)
+   }
+   ============================================================ */
+
+const DATA = [
+  {
+    id: "inspiration",
+    title: "Inspiración",
+    desc: "Galerías de UI, mobile patterns, landing pages y referencias visuales.",
+    resources: [
+      { name: "Mobbin", url: "https://mobbin.com", desc: "Patrones de mobile y web apps reales, organizados por flow y screen.", tag: "freemium" },
+      { name: "Page Flows", url: "https://pageflows.com", desc: "Recordings en video de flows completos: onboarding, checkout, signup, etc.", tag: "paid" },
+      { name: "Refero", url: "https://refero.design", desc: "Referencias de UI organizadas por componente, flow e industria.", tag: "freemium" },
+      { name: "Dribbble", url: "https://dribbble.com", desc: "Comunidad de shots de diseño, ideal para exploración visual rápida.", tag: "freemium" },
+      { name: "Godly", url: "https://godly.website", desc: "Curaduría de los websites más innovadores y experimentales del momento.", tag: "free" },
+      { name: "Lapa Ninja", url: "https://www.lapa.ninja", desc: "6,000+ landing pages categorizadas, con design tips y heurísticas.", tag: "free" },
+      { name: "One Page Love", url: "https://onepagelove.com", desc: "Showcase de single-page websites con diseño destacado.", tag: "free" },
+      { name: "SaaS Landing Page", url: "https://saaslandingpage.com", desc: "Landing pages de SaaS organizadas por industria y sección.", tag: "free" }
+    ]
+  },
+  {
+    id: "design-systems",
+    title: "Design Systems",
+    desc: "Sistemas públicos de referencia y tools para construir el tuyo.",
+    resources: [
+      { name: "Apple HIG", url: "https://developer.apple.com/design/human-interface-guidelines", desc: "Tu base para todo lo de iOS.", tag: "free" },
+      { name: "Material Design 3", url: "https://m3.material.io", desc: "Sistema de Google, util como contraste con HIG.", tag: "free" },
+      { name: "shadcn/ui", url: "https://ui.shadcn.com", desc: "Componentes copy-paste con CSS variables. Tu base actual.", tag: "open-source" }
+    ]
+  },
+  {
+    id: "typography",
+    title: "Tipografía",
+    desc: "Foundries, generadores de scale, pairing y herramientas.",
+    resources: [
+      { name: "Fontshare", url: "https://fontshare.com", desc: "Foundry de fuentes gratis con licencia comercial.", tag: "free" },
+      { name: "Type Scale", url: "https://typescale.com", desc: "Generador visual de modular scales.", tag: "free" }
+    ]
+  },
+  {
+    id: "color",
+    title: "Color",
+    desc: "Generadores de paletas, escalas y herramientas de accesibilidad de color.",
+    resources: [
+      { name: "tints.dev", url: "https://www.tints.dev", desc: "Generador de escalas de color de 11 pasos para design systems.", tag: "free" },
+      { name: "Realtime Colors", url: "https://www.realtimecolors.com", desc: "Preview de paletas en mockups reales en tiempo real.", tag: "free" }
+    ]
+  },
+  {
+    id: "icons",
+    title: "Iconos",
+    desc: "Librerías de iconos open-source y custom.",
+    resources: [
+      { name: "Lucide", url: "https://lucide.dev", desc: "Set de iconos open-source consistente, ideal con shadcn/ui.", tag: "open-source" },
+      { name: "Phosphor Icons", url: "https://phosphoricons.com", desc: "Familia de iconos con 6 pesos distintos.", tag: "open-source" },
+      { name: "SF Symbols", url: "https://developer.apple.com/sf-symbols/", desc: "Iconos oficiales de Apple para iOS.", tag: "free" }
+    ]
+  },
+  {
+    id: "illustrations",
+    title: "Ilustraciones & 3D",
+    desc: "Ilustraciones, doodles y assets 3D para usar en producto.",
+    resources: []
+  },
+  {
+    id: "stock",
+    title: "Stock photos & video",
+    desc: "Fotos y video libres de derechos.",
+    resources: []
+  },
+  {
+    id: "mockups",
+    title: "Mockups",
+    desc: "Device mockups, scene generators y branding mockups.",
+    resources: []
+  },
+  {
+    id: "design-tools",
+    title: "Software de diseño",
+    desc: "Herramientas de diseño visual, prototyping y wireframing.",
+    resources: [
+      { name: "Figma", url: "https://figma.com", desc: "Tu herramienta principal de diseño.", tag: "freemium" }
+    ]
+  },
+  {
+    id: "figma-plugins",
+    title: "Plugins de Figma",
+    desc: "Plugins que te ahorran tiempo en el día a día.",
+    resources: []
+  },
+  {
+    id: "prototyping",
+    title: "Prototyping",
+    desc: "Para prototipos avanzados con micro-interacciones complejas.",
+    resources: []
+  },
+  {
+    id: "ai-design",
+    title: "AI para diseño",
+    desc: "Tools de IA para generación, layouts, copy y workflow.",
+    resources: []
+  },
+  {
+    id: "no-code",
+    title: "No-code / Builders",
+    desc: "Para construir sin escribir código.",
+    resources: []
+  },
+  {
+    id: "ux-research",
+    title: "UX Research",
+    desc: "Tools para entrevistas, testing y síntesis de research.",
+    resources: []
+  },
+  {
+    id: "analytics",
+    title: "Analytics",
+    desc: "Product analytics y comportamiento de usuario.",
+    resources: []
+  },
+  {
+    id: "ab-testing",
+    title: "A/B Testing & Feature flags",
+    desc: "Experimentación, feature flags y growth.",
+    resources: []
+  },
+  {
+    id: "heuristics",
+    title: "Heurísticas & principios",
+    desc: "Laws of UX, NN/g, biases cognitivos y mental models.",
+    resources: []
+  },
+  {
+    id: "a11y",
+    title: "Accesibilidad",
+    desc: "WCAG, contrast, screen readers y inclusive design.",
+    resources: []
+  },
+  {
+    id: "ux-writing",
+    title: "UX Writing & Microcopy",
+    desc: "Cómo escribir interfaces que comuniquen claro.",
+    resources: []
+  },
+  {
+    id: "motion",
+    title: "Motion & Animation",
+    desc: "Lottie, Rive, motion principles y animaciones para producto.",
+    resources: []
+  },
+  {
+    id: "frontend",
+    title: "Front-end & Code",
+    desc: "Documentación de HTML, CSS, JS y referencias técnicas.",
+    resources: []
+  },
+  {
+    id: "frameworks",
+    title: "Frameworks",
+    desc: "React, Flutter, SwiftUI, Next.js — lo que conecta con tu diseño.",
+    resources: []
+  },
+  {
+    id: "design-tokens",
+    title: "Design Tokens",
+    desc: "Style Dictionary, tokens.studio, Specify — para llevar tokens a código.",
+    resources: []
+  },
+  {
+    id: "blogs",
+    title: "Blogs & publicaciones",
+    desc: "Lectura larga y artículos de referencia.",
+    resources: []
+  },
+  {
+    id: "newsletters",
+    title: "Newsletters",
+    desc: "Para llenar tu inbox con cosas útiles cada semana.",
+    resources: []
+  },
+  {
+    id: "podcasts",
+    title: "Podcasts",
+    desc: "Para escuchar mientras caminas o trabajas.",
+    resources: []
+  },
+  {
+    id: "youtube",
+    title: "YouTube & video",
+    desc: "Canales de diseño, tutoriales y críticas de UI.",
+    resources: []
+  },
+  {
+    id: "courses",
+    title: "Cursos & certificaciones",
+    desc: "Programas estructurados de aprendizaje.",
+    resources: []
+  },
+  {
+    id: "books",
+    title: "Libros",
+    desc: "Clásicos y libros recientes de UX, UI y product design.",
+    resources: []
+  },
+  {
+    id: "portfolios",
+    title: "Portfolios & case studies",
+    desc: "Referencia de portafolios y case studies bien hechos.",
+    resources: []
+  },
+  {
+    id: "community",
+    title: "Comunidades",
+    desc: "Slacks, Discords, Twitter follows y mentorship.",
+    resources: []
+  },
+  {
+    id: "jobs",
+    title: "Carrera & job boards",
+    desc: "Buscar trabajo, salarios, entrevistas e interview prep.",
+    resources: []
+  },
+  {
+    id: "branding",
+    title: "Branding & identidad",
+    desc: "Referencias de branding, identidad visual y logos.",
+    resources: []
+  }
+];
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
+
+function getHost(url) {
+  try { return new URL(url).hostname.replace(/^www\./, ''); }
+  catch { return ''; }
+}
+
+function renderNav() {
+  const nav = $('#nav');
+  nav.innerHTML = DATA.map(cat => `
+    <li data-target="${cat.id}">
+      <span>${cat.title}</span>
+      <span class="count">${String(cat.resources.length).padStart(2, '0')}</span>
+    </li>
+  `).join('');
+
+  $$('#nav li').forEach(li => {
+    li.addEventListener('click', () => {
+      const target = li.dataset.target;
+      const el = document.getElementById(target);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}
+
+function renderCategories() {
+  const container = $('#categoriesContainer');
+  container.innerHTML = DATA.map(cat => `
+    <section class="category" id="${cat.id}">
+      <header class="category-header">
+        <h2 class="category-title">${cat.title}</h2>
+        <span class="category-count">${String(cat.resources.length).padStart(2, '0')} · ${cat.resources.length === 1 ? 'recurso' : 'recursos'}</span>
+      </header>
+      ${cat.desc ? `<p class="category-desc">${cat.desc}</p>` : ''}
+      <div class="resources">
+        ${cat.resources.length === 0
+          ? `<div class="empty">Aún no hay recursos en esta categoría.</div>`
+          : cat.resources.map(r => `
+            <a class="resource" href="${r.url}" target="_blank" rel="noopener">
+              <div class="resource-main">
+                <div class="resource-name">${r.name}</div>
+                ${r.desc ? `<div class="resource-desc">${r.desc}</div>` : ''}
+                <div class="resource-meta">
+                  <span class="resource-host">↗ ${getHost(r.url)}</span>
+                  ${r.tag ? `<span class="resource-tag">${r.tag}</span>` : ''}
+                </div>
+              </div>
+              <div class="resource-arrow">→</div>
+            </a>
+          `).join('')}
+      </div>
+    </section>
+  `).join('');
+}
+
+function updateMeta() {
+  const total = DATA.reduce((sum, cat) => sum + cat.resources.length, 0);
+  $('#totalMeta').textContent = `${String(total).padStart(3, '0')} resources · ${DATA.length} categories · curated by Jose`;
+  $('#lastUpdated').textContent = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+}
+
+/* ---------- Search ---------- */
+
+function setupSearch() {
+  const search = $('#search');
+  search.addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    const categories = $$('.category');
+    let anyVisible = false;
+
+    categories.forEach(catEl => {
+      const resources = catEl.querySelectorAll('.resource');
+      const empties = catEl.querySelectorAll('.empty');
+      let catHasMatch = false;
+
+      if (q === '') {
+        // reset
+        catEl.style.display = '';
+        resources.forEach(r => r.style.display = '');
+        empties.forEach(e => e.style.display = '');
+        anyVisible = true;
+        return;
+      }
+
+      // hide "empty" placeholders during search
+      empties.forEach(e => e.style.display = 'none');
+
+      resources.forEach(r => {
+        const text = r.textContent.toLowerCase();
+        if (text.includes(q)) {
+          r.style.display = '';
+          catHasMatch = true;
+        } else {
+          r.style.display = 'none';
+        }
+      });
+
+      const titleMatch = catEl.querySelector('.category-title').textContent.toLowerCase().includes(q);
+      if (catHasMatch || titleMatch) {
+        catEl.style.display = '';
+        anyVisible = true;
+      } else {
+        catEl.style.display = 'none';
+      }
+    });
+
+    // no-results message
+    let noRes = $('#noResults');
+    if (!anyVisible && q !== '') {
+      if (!noRes) {
+        noRes = document.createElement('div');
+        noRes.id = 'noResults';
+        noRes.className = 'no-results';
+        noRes.textContent = 'Nothing found.';
+        $('#categoriesContainer').appendChild(noRes);
+      }
+      noRes.style.display = '';
+    } else if (noRes) {
+      noRes.style.display = 'none';
+    }
+  });
+}
+
+/* ---------- Theme ---------- */
+
+function setupTheme() {
+  const saved = localStorage.getItem('lib-theme');
+  if (saved) document.documentElement.setAttribute('data-theme', saved);
+
+  $('#themeToggle').addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('lib-theme', next);
+  });
+}
+
+/* ---------- Init ---------- */
+
+renderNav();
+renderCategories();
+updateMeta();
+setupSearch();
+setupTheme();
+</script>
+
+</body>
+</html>
