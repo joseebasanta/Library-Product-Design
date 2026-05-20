@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -445,13 +445,13 @@ a { color: inherit; text-decoration: none; }
         <circle cx="11" cy="11" r="8"/>
         <path d="m21 21-4.3-4.3"/>
       </svg>
-      <input type="text" class="search" id="search" placeholder="Buscar recursos…" />
+      <input type="text" class="search" id="search" placeholder="Search resources…" />
     </div>
 
-    <div class="nav-label">Categorías</div>
+    <div class="nav-label">Categories</div>
     <ul class="nav" id="nav"></ul>
 
-    <button class="theme-toggle" id="themeToggle">◐ Cambiar tema</button>
+    <button class="theme-toggle" id="themeToggle">◐ Toggle theme</button>
   </aside>
 
   <!-- ============ MAIN ============ -->
@@ -459,7 +459,7 @@ a { color: inherit; text-decoration: none; }
 
     <section class="intro">
       <h1>A curated <em>library</em> for design & product.</h1>
-      <p>Recursos cuidadosamente seleccionados para diseño de producto, UI/UX, design systems, front-end y desarrollo profesional. Una biblioteca viva que va creciendo.</p>
+      <p>Carefully curated resources for product design, UI/UX, design systems, front-end and professional development. A living library that keeps growing.</p>
       <div class="meta" id="totalMeta">Loading…</div>
     </section>
 
@@ -488,227 +488,268 @@ a { color: inherit; text-decoration: none; }
 
 const DATA = [
   {
-    id: "inspiration",
-    title: "Inspiración",
-    desc: "Galerías de UI, mobile patterns, landing pages y referencias visuales.",
+    id: "ui-references",
+    title: "UI References",
+    desc: "UI galleries, mobile patterns, landing pages and product screens.",
     resources: [
-      { name: "Mobbin", url: "https://mobbin.com", desc: "Patrones de mobile y web apps reales, organizados por flow y screen.", tag: "freemium" },
-      { name: "Page Flows", url: "https://pageflows.com", desc: "Recordings en video de flows completos: onboarding, checkout, signup, etc.", tag: "paid" },
-      { name: "Refero", url: "https://refero.design", desc: "Referencias de UI organizadas por componente, flow e industria.", tag: "freemium" },
-      { name: "Dribbble", url: "https://dribbble.com", desc: "Comunidad de shots de diseño, ideal para exploración visual rápida.", tag: "freemium" },
-      { name: "Godly", url: "https://godly.website", desc: "Curaduría de los websites más innovadores y experimentales del momento.", tag: "free" },
-      { name: "Lapa Ninja", url: "https://www.lapa.ninja", desc: "6,000+ landing pages categorizadas, con design tips y heurísticas.", tag: "free" },
-      { name: "One Page Love", url: "https://onepagelove.com", desc: "Showcase de single-page websites con diseño destacado.", tag: "free" },
-      { name: "SaaS Landing Page", url: "https://saaslandingpage.com", desc: "Landing pages de SaaS organizadas por industria y sección.", tag: "free" }
+      { name: "Mobbin", url: "https://mobbin.com", desc: "Real mobile and web app patterns, organized by flow and screen.", tag: "freemium" },
+      { name: "Page Flows", url: "https://pageflows.com", desc: "Video recordings of complete flows: onboarding, checkout, signup, etc.", tag: "paid" },
+      { name: "Refero", url: "https://refero.design", desc: "UI references organized by component, flow and industry.", tag: "freemium" },
+      { name: "Godly", url: "https://godly.website", desc: "Curated showcase of the most innovative and experimental websites.", tag: "free" },
+      { name: "Lapa Ninja", url: "https://www.lapa.ninja", desc: "6,000+ categorized landing pages with design tips and heuristics.", tag: "free" },
+      { name: "One Page Love", url: "https://onepagelove.com", desc: "Showcase of single-page websites with outstanding design.", tag: "free" },
+      { name: "SaaS Landing Page", url: "https://saaslandingpage.com", desc: "SaaS landing pages organized by industry and section.", tag: "free" }
+    ]
+  },
+  {
+    id: "inspiration",
+    title: "Inspiration",
+    desc: "Visual discovery, moodboards and broad creative references.",
+    resources: [
+      { name: "Dribbble", url: "https://dribbble.com", desc: "Design shots community, great for quick visual exploration.", tag: "freemium" },
+      { name: "Pinterest", url: "https://www.pinterest.com", desc: "Visual discovery engine for moodboards, references and creative direction.", tag: "free" },
+      { name: "Behance", url: "https://www.behance.net", desc: "Adobe's platform for showcasing and discovering creative work across disciplines.", tag: "free" },
+      { name: "Cosmos", url: "https://www.cosmos.so", desc: "Visual bookmarking tool for collecting and organizing design inspiration.", tag: "freemium" },
+      { name: "Designspiration", url: "https://www.designspiration.com", desc: "Search-driven inspiration platform filtered by color, pattern and style.", tag: "free" }
     ]
   },
   {
     id: "design-systems",
     title: "Design Systems",
-    desc: "Sistemas públicos de referencia y tools para construir el tuyo.",
+    desc: "Public reference systems and tools to build your own.",
     resources: [
-      { name: "Apple HIG", url: "https://developer.apple.com/design/human-interface-guidelines", desc: "Tu base para todo lo de iOS.", tag: "free" },
-      { name: "Material Design 3", url: "https://m3.material.io", desc: "Sistema de Google, util como contraste con HIG.", tag: "free" },
-      { name: "shadcn/ui", url: "https://ui.shadcn.com", desc: "Componentes copy-paste con CSS variables. Tu base actual.", tag: "open-source" }
+      { name: "Apple HIG", url: "https://developer.apple.com/design/human-interface-guidelines", desc: "Apple's official guidelines for iOS and platform design.", tag: "free" },
+      { name: "Material Design 3", url: "https://m3.material.io", desc: "Google's design system, useful as contrast to HIG.", tag: "free" },
+      { name: "shadcn/ui", url: "https://ui.shadcn.com", desc: "Copy-paste components with CSS variables. Radix + Tailwind.", tag: "open-source" }
     ]
   },
   {
     id: "typography",
-    title: "Tipografía",
-    desc: "Foundries, generadores de scale, pairing y herramientas.",
+    title: "Typography",
+    desc: "Foundries, scale generators, pairing and type tools.",
     resources: [
-      { name: "Fontshare", url: "https://fontshare.com", desc: "Foundry de fuentes gratis con licencia comercial.", tag: "free" },
-      { name: "Type Scale", url: "https://typescale.com", desc: "Generador visual de modular scales.", tag: "free" }
+      { name: "Fontshare", url: "https://fontshare.com", desc: "Free font foundry with commercial-use licenses.", tag: "free" },
+      { name: "Type Scale", url: "https://typescale.com", desc: "Visual modular scale generator for type hierarchies.", tag: "free" }
     ]
   },
   {
     id: "color",
     title: "Color",
-    desc: "Generadores de paletas, escalas y herramientas de accesibilidad de color.",
+    desc: "Palette generators, color scales and accessibility tools.",
     resources: [
-      { name: "tints.dev", url: "https://www.tints.dev", desc: "Generador de escalas de color de 11 pasos para design systems.", tag: "free" },
-      { name: "Realtime Colors", url: "https://www.realtimecolors.com", desc: "Preview de paletas en mockups reales en tiempo real.", tag: "free" }
+      { name: "tints.dev", url: "https://www.tints.dev", desc: "11-step color scale generator built for design systems.", tag: "free" },
+      { name: "Realtime Colors", url: "https://www.realtimecolors.com", desc: "Preview color palettes on real mockups in real time.", tag: "free" }
     ]
   },
   {
     id: "icons",
-    title: "Iconos",
-    desc: "Librerías de iconos open-source y custom.",
+    title: "Icons",
+    desc: "Open-source and custom icon libraries.",
     resources: [
-      { name: "Lucide", url: "https://lucide.dev", desc: "Set de iconos open-source consistente, ideal con shadcn/ui.", tag: "open-source" },
-      { name: "Phosphor Icons", url: "https://phosphoricons.com", desc: "Familia de iconos con 6 pesos distintos.", tag: "open-source" },
-      { name: "SF Symbols", url: "https://developer.apple.com/sf-symbols/", desc: "Iconos oficiales de Apple para iOS.", tag: "free" }
+      { name: "Lucide", url: "https://lucide.dev", desc: "Consistent open-source icon set, pairs well with shadcn/ui.", tag: "open-source" },
+      { name: "Phosphor Icons", url: "https://phosphoricons.com", desc: "Icon family with 6 distinct weights.", tag: "open-source" },
+      { name: "SF Symbols", url: "https://developer.apple.com/sf-symbols/", desc: "Apple's official icon set for iOS and macOS.", tag: "free" }
     ]
   },
   {
     id: "illustrations",
-    title: "Ilustraciones & 3D",
-    desc: "Ilustraciones, doodles y assets 3D para usar en producto.",
+    title: "Illustrations & 3D",
+    desc: "Illustrations, doodles and 3D assets for product design.",
     resources: []
   },
   {
     id: "stock",
     title: "Stock photos & video",
-    desc: "Fotos y video libres de derechos.",
+    desc: "Royalty-free photos and video.",
     resources: []
   },
   {
     id: "mockups",
     title: "Mockups",
-    desc: "Device mockups, scene generators y branding mockups.",
+    desc: "Device mockups, scene generators and branding mockups.",
     resources: []
   },
   {
-    id: "design-tools",
-    title: "Software de diseño",
-    desc: "Herramientas de diseño visual, prototyping y wireframing.",
+    id: "graphic-asset-marketplaces",
+    title: "Graphic Asset Marketplaces",
+    desc: "Marketplaces for fonts, templates, graphics and design assets.",
     resources: [
-      { name: "Figma", url: "https://figma.com", desc: "Tu herramienta principal de diseño.", tag: "freemium" }
+      { name: "Creative Market", url: "https://creativemarket.com", desc: "Marketplace for fonts, graphics, templates, themes and design assets.", tag: "paid" }
+    ]
+  },
+  {
+    id: "design-tools",
+    title: "Design Software",
+    desc: "Visual design, prototyping and wireframing tools.",
+    resources: [
+      { name: "Figma", url: "https://figma.com", desc: "Industry-standard collaborative design tool.", tag: "freemium" }
     ]
   },
   {
     id: "figma-plugins",
-    title: "Plugins de Figma",
-    desc: "Plugins que te ahorran tiempo en el día a día.",
-    resources: []
+    title: "Figma Plugins",
+    desc: "Plugins that save you time in your daily workflow.",
+    resources: [
+      { name: "Unsplash", url: "https://www.figma.com/community/plugin/738454987945972471", desc: "Insert high-quality stock photos from Unsplash directly into your designs.", tag: "free" }
+    ]
   },
   {
     id: "prototyping",
     title: "Prototyping",
-    desc: "Para prototipos avanzados con micro-interacciones complejas.",
+    desc: "Advanced prototypes with complex micro-interactions.",
     resources: []
   },
   {
     id: "ai-design",
-    title: "AI para diseño",
-    desc: "Tools de IA para generación, layouts, copy y workflow.",
+    title: "AI for Design",
+    desc: "AI tools for generation, layouts, copy and workflow.",
     resources: []
   },
   {
     id: "no-code",
     title: "No-code / Builders",
-    desc: "Para construir sin escribir código.",
+    desc: "Build without writing code.",
     resources: []
   },
   {
     id: "ux-research",
     title: "UX Research",
-    desc: "Tools para entrevistas, testing y síntesis de research.",
-    resources: []
+    desc: "Tools for interviews, usability testing and research synthesis.",
+    resources: [
+      { name: "Nielsen Norman Group", url: "https://www.nngroup.com", desc: "Evidence-based UX research, articles and usability heuristics.", tag: "free" }
+    ]
   },
   {
     id: "analytics",
     title: "Analytics",
-    desc: "Product analytics y comportamiento de usuario.",
+    desc: "Product analytics and user behavior tracking.",
     resources: []
   },
   {
     id: "ab-testing",
     title: "A/B Testing & Feature flags",
-    desc: "Experimentación, feature flags y growth.",
+    desc: "Experimentation, feature flags and growth.",
     resources: []
   },
   {
     id: "heuristics",
-    title: "Heurísticas & principios",
-    desc: "Laws of UX, NN/g, biases cognitivos y mental models.",
+    title: "Heuristics & Principles",
+    desc: "Laws of UX, NN/g, cognitive biases and mental models.",
     resources: []
   },
   {
     id: "a11y",
-    title: "Accesibilidad",
-    desc: "WCAG, contrast, screen readers y inclusive design.",
+    title: "Accessibility",
+    desc: "WCAG, contrast, screen readers and inclusive design.",
     resources: []
   },
   {
     id: "ux-writing",
     title: "UX Writing & Microcopy",
-    desc: "Cómo escribir interfaces que comuniquen claro.",
+    desc: "How to write interfaces that communicate clearly.",
     resources: []
   },
   {
     id: "motion",
     title: "Motion & Animation",
-    desc: "Lottie, Rive, motion principles y animaciones para producto.",
+    desc: "Lottie, Rive, motion principles and product animations.",
     resources: []
   },
   {
     id: "frontend",
     title: "Front-end & Code",
-    desc: "Documentación de HTML, CSS, JS y referencias técnicas.",
+    desc: "HTML, CSS, JS documentation and technical references.",
     resources: []
   },
   {
     id: "frameworks",
     title: "Frameworks",
-    desc: "React, Flutter, SwiftUI, Next.js — lo que conecta con tu diseño.",
+    desc: "React, Flutter, SwiftUI, Next.js — where design meets code.",
     resources: []
   },
   {
     id: "design-tokens",
     title: "Design Tokens",
-    desc: "Style Dictionary, tokens.studio, Specify — para llevar tokens a código.",
+    desc: "Style Dictionary, tokens.studio, Specify — bridging tokens to code.",
     resources: []
   },
   {
     id: "blogs",
-    title: "Blogs & publicaciones",
-    desc: "Lectura larga y artículos de referencia.",
-    resources: []
+    title: "Blogs & Publications",
+    desc: "Long reads and reference articles.",
+    resources: [
+      { name: "Creative Bloq", url: "https://www.creativebloq.com", desc: "Daily articles on graphic design, web design, branding and digital art.", tag: "free" },
+      { name: "AIGA Eye on Design", url: "https://eyeondesign.aiga.org", desc: "AIGA's editorial platform exploring design culture, practice and criticism.", tag: "free" },
+      { name: "Smashing Magazine", url: "https://www.smashingmagazine.com", desc: "In-depth articles on front-end, UX, accessibility and web design best practices.", tag: "free" },
+      { name: "Creative Review", url: "https://www.creativereview.co.uk", desc: "Advertising, design and visual culture journalism since 1980.", tag: "freemium" },
+      { name: "Design Work Life", url: "https://designworklife.com", desc: "Curated blog showcasing branding, packaging, print and visual design work.", tag: "free" },
+      { name: "Abduzeedo", url: "https://abduzeedo.com", desc: "Daily design inspiration covering graphic design, photography and UX.", tag: "free" },
+      { name: "Creative Boom", url: "https://www.creativeboom.com", desc: "Features on illustration, photography, branding and the creative industry.", tag: "free" },
+      { name: "The DSGN Blog", url: "https://thedsgnblog.com", desc: "Minimalist blog curating graphic design, typography and branding projects.", tag: "free" },
+      { name: "Really Good Designs", url: "https://reallygooddesigns.com", desc: "Curated collection of well-crafted websites and digital design references.", tag: "free" },
+      { name: "Creative Market Blog", url: "https://creativemarket.com/blog", desc: "Tips and trends on fonts, graphics, templates and creative workflows.", tag: "free" }
+    ]
   },
   {
     id: "newsletters",
     title: "Newsletters",
-    desc: "Para llenar tu inbox con cosas útiles cada semana.",
+    desc: "Useful design content delivered to your inbox weekly.",
     resources: []
   },
   {
     id: "podcasts",
     title: "Podcasts",
-    desc: "Para escuchar mientras caminas o trabajas.",
+    desc: "Listen while you walk or work.",
     resources: []
   },
   {
     id: "youtube",
     title: "YouTube & video",
-    desc: "Canales de diseño, tutoriales y críticas de UI.",
+    desc: "Design channels, tutorials and UI critiques.",
     resources: []
   },
   {
     id: "courses",
-    title: "Cursos & certificaciones",
-    desc: "Programas estructurados de aprendizaje.",
+    title: "Courses & Certifications",
+    desc: "Structured learning programs.",
     resources: []
   },
   {
     id: "books",
-    title: "Libros",
-    desc: "Clásicos y libros recientes de UX, UI y product design.",
+    title: "Books",
+    desc: "Classic and recent books on UX, UI and product design.",
     resources: []
   },
   {
     id: "portfolios",
     title: "Portfolios & case studies",
-    desc: "Referencia de portafolios y case studies bien hechos.",
+    desc: "Portfolio and case study references done right.",
     resources: []
   },
   {
     id: "community",
-    title: "Comunidades",
-    desc: "Slacks, Discords, Twitter follows y mentorship.",
+    title: "Communities",
+    desc: "Slacks, Discords, Twitter follows and mentorship.",
     resources: []
   },
   {
     id: "jobs",
-    title: "Carrera & job boards",
-    desc: "Buscar trabajo, salarios, entrevistas e interview prep.",
+    title: "Career & Job Boards",
+    desc: "Job search, salaries, interviews and interview prep.",
     resources: []
   },
   {
     id: "branding",
-    title: "Branding & identidad",
-    desc: "Referencias de branding, identidad visual y logos.",
-    resources: []
+    title: "Branding & Identity",
+    desc: "Branding references, visual identity and logos.",
+    resources: [
+      { name: "Pentagram", url: "https://www.pentagram.com", desc: "World's largest independent design studio. Branding, identity and editorial.", tag: "free" },
+      { name: "MetaDesign", url: "https://metadesign.com", desc: "Global branding agency focused on brand strategy, identity systems and brand experiences.", tag: "free" },
+      { name: "Moving Brands", url: "https://movingbrands.com", desc: "Creative agency specializing in brand identity, digital products and experience design.", tag: "free" },
+      { name: "Brandemia", url: "https://brandemia.org", desc: "Spanish-language blog covering rebrands, visual identity and brand trends.", tag: "free" },
+      { name: "Logo System", url: "https://logosystem.co", desc: "Curated archive of logo designs and brand identity systems.", tag: "free" },
+      { name: "BP&O", url: "https://bpando.org", desc: "Editorial reviews of branding and packaging design projects worldwide.", tag: "free" }
+    ]
   }
 ];
 
@@ -748,12 +789,12 @@ function renderCategories() {
     <section class="category" id="${cat.id}">
       <header class="category-header">
         <h2 class="category-title">${cat.title}</h2>
-        <span class="category-count">${String(cat.resources.length).padStart(2, '0')} · ${cat.resources.length === 1 ? 'recurso' : 'recursos'}</span>
+        <span class="category-count">${String(cat.resources.length).padStart(2, '0')} · ${cat.resources.length === 1 ? 'resource' : 'resources'}</span>
       </header>
       ${cat.desc ? `<p class="category-desc">${cat.desc}</p>` : ''}
       <div class="resources">
         ${cat.resources.length === 0
-          ? `<div class="empty">Aún no hay recursos en esta categoría.</div>`
+          ? `<div class="empty">No resources in this category yet.</div>`
           : cat.resources.map(r => `
             <a class="resource" href="${r.url}" target="_blank" rel="noopener">
               <div class="resource-main">
