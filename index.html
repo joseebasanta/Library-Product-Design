@@ -416,6 +416,43 @@ a { color: inherit; text-decoration: none; }
   padding: 80px 0;
 }
 
+/* ---------- Back to top ---------- */
+
+.back-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 40px;
+  height: 40px;
+  background: var(--ink);
+  color: var(--bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .2s, transform .2s, background .15s;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.back-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-top:hover {
+  background: var(--accent);
+}
+
+@media (max-width: 860px) {
+  .back-top { bottom: 24px; right: 24px; }
+}
+
 /* ---------- Fade-in on load ---------- */
 
 .category {
@@ -473,6 +510,12 @@ a { color: inherit; text-decoration: none; }
   </main>
 
 </div>
+
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18 15l-6-6-6 6"/>
+  </svg>
+</button>
 
 <script>
 /* ============================================================
@@ -1001,6 +1044,16 @@ function setupTheme() {
   });
 }
 
+/* ---------- Back to top ---------- */
+
+function setupBackTop() {
+  const btn = $('#backTop');
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
 /* ---------- Init ---------- */
 
 renderNav();
@@ -1008,6 +1061,7 @@ renderCategories();
 updateMeta();
 setupSearch();
 setupTheme();
+setupBackTop();
 </script>
 
 </body>
