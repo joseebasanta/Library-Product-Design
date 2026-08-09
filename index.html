@@ -344,6 +344,15 @@ a { color: inherit; text-decoration: none; }
   flex-direction: column;
   gap: 6px;
   min-width: 0;
+  padding: 14px;
+  margin: -14px;
+  border-radius: 10px;
+  transition: background .18s ease, transform .18s ease;
+}
+
+.resource:hover {
+  background: var(--bg-elev);
+  transform: translateY(-2px);
 }
 
 .resource-name {
