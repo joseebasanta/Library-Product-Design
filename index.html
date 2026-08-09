@@ -8,32 +8,32 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg: #f6f2ea;
-  --bg-elev: #fdfaf3;
-  --ink: #15130f;
-  --ink-soft: #5a564c;
-  --ink-faint: #908a7c;
-  --line: #e3dccd;
-  --accent: #b8421c;
-  --accent-soft: #b8421c1a;
-  --serif: "Instrument Serif", Georgia, serif;
-  --sans: "Geist", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --bg: #f4f4f4;
+  --bg-elev: #ffffff;
+  --ink: #333333;
+  --ink-soft: #5c5c5c;
+  --ink-faint: #8f8f8f;
+  --line: #e2e2e2;
+  --accent: #1f1f1f;
+  --accent-soft: #1f1f1f1a;
+  --serif: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  --mono: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
 }
 
 [data-theme="dark"] {
-  --bg: #0e0d0a;
-  --bg-elev: #161410;
-  --ink: #f1ece0;
-  --ink-soft: #a8a294;
-  --ink-faint: #6c6759;
-  --line: #2a2620;
-  --accent: #e8763d;
-  --accent-soft: #e8763d22;
+  --bg: #101010;
+  --bg-elev: #1a1a1a;
+  --ink: #d9d9d9;
+  --ink-soft: #a0a0a0;
+  --ink-faint: #707070;
+  --line: #2c2c2c;
+  --accent: #ededed;
+  --accent-soft: #ededed1a;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -92,14 +92,16 @@ a { color: inherit; text-decoration: none; }
 .brand {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 38px;
+  font-weight: 600;
+  font-size: 32px;
   line-height: 1;
   margin-bottom: 8px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .brand-sub {
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -138,6 +140,7 @@ a { color: inherit; text-decoration: none; }
 
 .nav-label {
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
@@ -170,12 +173,14 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--mono);
   font-size: 11px;
   color: var(--ink-faint);
-  font-weight: 400;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
 }
 
 .theme-toggle {
   margin-top: 40px;
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -186,7 +191,6 @@ a { color: inherit; text-decoration: none; }
   border-radius: 4px;
   cursor: pointer;
   transition: all .15s;
-  font-family: var(--mono);
 }
 
 .theme-toggle:hover {
@@ -206,18 +210,18 @@ a { color: inherit; text-decoration: none; }
 }
 
 .intro {
-  margin-bottom: 80px;
-  padding-bottom: 48px;
+  margin-bottom: 56px;
+  padding-bottom: 32px;
   border-bottom: 1px solid var(--line);
 }
 
 .intro h1 {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(48px, 7vw, 84px);
-  line-height: 0.95;
-  letter-spacing: -0.025em;
-  margin-bottom: 24px;
+  font-weight: 500;
+  font-size: clamp(24px, 2.6vw, 34px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
 }
 
 .intro h1 em {
@@ -235,6 +239,7 @@ a { color: inherit; text-decoration: none; }
 .intro .meta {
   margin-top: 24px;
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -244,125 +249,148 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Category section ---------- */
 
 .category {
-  margin-bottom: 80px;
+  margin-bottom: 96px;
   scroll-margin-top: 32px;
 }
 
 .category-header {
+  display: grid;
+  grid-template-columns: minmax(220px, 300px) 1fr;
+  gap: 40px;
+  align-items: start;
+  margin-bottom: 44px;
+}
+
+@media (max-width: 860px) {
+  .category-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+.category-heading {
   display: flex;
   align-items: baseline;
+  gap: 12px;
   justify-content: space-between;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--line);
+}
+
+.category-heading-left {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-width: 0;
+}
+
+.category-index {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .category-title {
   font-family: var(--serif);
-  font-style: italic;
-  font-size: 36px;
-  line-height: 1;
-  letter-spacing: -0.015em;
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
 }
 
 .category-count {
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
   color: var(--ink-faint);
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .category-desc {
-  font-size: 14px;
-  color: var(--ink-soft);
-  margin-bottom: 28px;
-  max-width: 560px;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  color: var(--ink);
+  padding-top: 2px;
 }
 
 /* ---------- Resource items ---------- */
 
 .resources {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px 32px;
+}
+
+@media (max-width: 1100px) {
+  .resources { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .resources { grid-template-columns: 1fr; }
 }
 
 .resource {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
-  padding: 18px 0;
-  border-bottom: 1px solid var(--line);
-  transition: padding-left .2s;
-  align-items: start;
-}
-
-.resource:hover {
-  padding-left: 8px;
-}
-
-.resource:hover .resource-arrow {
-  transform: translateX(4px);
-  color: var(--accent);
-}
-
-.resource-main {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   min-width: 0;
 }
 
 .resource-name {
-  font-family: var(--serif);
-  font-size: 22px;
-  line-height: 1.2;
-  letter-spacing: -0.01em;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.3;
   color: var(--ink);
+  transition: color .15s;
 }
 
-.resource-name em {
-  font-style: italic;
+.resource:hover .resource-name {
+  color: var(--accent);
 }
 
 .resource-desc {
-  font-size: 14px;
+  font-size: 13.5px;
   color: var(--ink-soft);
-  line-height: 1.45;
+  line-height: 1.55;
 }
 
 .resource-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-top: 4px;
+  gap: 10px;
+  margin-top: 2px;
   flex-wrap: wrap;
 }
 
 .resource-host {
   font-family: var(--mono);
-  font-size: 11px;
+  font-weight: 500;
+  font-size: 10px;
   color: var(--ink-faint);
   letter-spacing: 0.02em;
 }
 
 .resource-tag {
   font-family: var(--mono);
-  font-size: 10px;
+  font-weight: 500;
+  font-size: 9px;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 2px 7px;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
   border-radius: 3px;
   background: var(--accent-soft);
   color: var(--accent);
-}
-
-.resource-arrow {
-  font-family: var(--serif);
-  font-size: 24px;
-  color: var(--ink-faint);
-  transition: all .2s;
-  align-self: center;
 }
 
 /* ---------- Empty state ---------- */
@@ -389,6 +417,7 @@ a { color: inherit; text-decoration: none; }
   padding-top: 32px;
   border-top: 1px solid var(--line);
   font-family: var(--mono);
+  font-weight: 500;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -991,27 +1020,29 @@ function renderNav() {
 
 function renderCategories() {
   const container = $('#categoriesContainer');
-  container.innerHTML = DATA.map(cat => `
+  container.innerHTML = DATA.map((cat, i) => `
     <section class="category" id="${cat.id}">
-      <header class="category-header">
-        <h2 class="category-title">${cat.title}</h2>
-        <span class="category-count">${String(cat.resources.length).padStart(2, '0')} · ${cat.resources.length === 1 ? 'resource' : 'resources'}</span>
-      </header>
-      ${cat.desc ? `<p class="category-desc">${cat.desc}</p>` : ''}
+      <div class="category-header">
+        <div class="category-heading">
+          <div class="category-heading-left">
+            <span class="category-index">${String(i + 1).padStart(2, '0')}</span>
+            <h2 class="category-title">${cat.title}</h2>
+          </div>
+          <span class="category-count">${String(cat.resources.length).padStart(2, '0')}</span>
+        </div>
+        ${cat.desc ? `<p class="category-desc">${cat.desc}</p>` : '<span></span>'}
+      </div>
       <div class="resources">
         ${cat.resources.length === 0
           ? `<div class="empty">No resources in this category yet.</div>`
           : cat.resources.map(r => `
             <a class="resource" href="${r.url}" target="_blank" rel="noopener">
-              <div class="resource-main">
-                <div class="resource-name">${r.name}</div>
-                ${r.desc ? `<div class="resource-desc">${r.desc}</div>` : ''}
-                <div class="resource-meta">
-                  <span class="resource-host">↗ ${getHost(r.url)}</span>
-                  ${r.tag ? `<span class="resource-tag">${r.tag}</span>` : ''}
-                </div>
+              <div class="resource-name">${r.name}</div>
+              ${r.desc ? `<div class="resource-desc">${r.desc}</div>` : ''}
+              <div class="resource-meta">
+                <span class="resource-host">↗ ${getHost(r.url)}</span>
+                ${r.tag ? `<span class="resource-tag">${r.tag}</span>` : ''}
               </div>
-              <div class="resource-arrow">→</div>
             </a>
           `).join('')}
       </div>
