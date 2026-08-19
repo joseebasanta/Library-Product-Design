@@ -21,6 +21,7 @@
   --accent: #1f1f1f;
   --accent-soft: #1f1f1f1a;
   --asilo: #1a5cff;
+  --asilo-soft: rgba(26, 92, 255, 0.06);
   --serif: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   --mono: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
@@ -35,6 +36,7 @@
   --line: #2c2c2c;
   --accent: #ededed;
   --accent-soft: #ededed1a;
+  --asilo-soft: rgba(56, 120, 255, 0.16);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -92,7 +94,6 @@ a { color: inherit; text-decoration: none; }
 
 .brand {
   font-family: var(--serif);
-  font-style: italic;
   font-weight: 600;
   font-size: 32px;
   line-height: 1;
@@ -226,7 +227,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .intro h1 em {
-  font-style: italic;
+  font-style: normal;
   color: var(--accent);
 }
 
@@ -320,7 +321,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .resource:hover {
-  background: var(--bg-elev);
+  background: var(--asilo-soft);
   transform: translateY(-2px);
 }
 
@@ -364,7 +365,6 @@ a { color: inherit; text-decoration: none; }
 .empty {
   padding: 24px 0;
   font-family: var(--serif);
-  font-style: italic;
   font-size: 16px;
   color: var(--ink-faint);
   border-bottom: 1px dashed var(--line);
@@ -522,7 +522,6 @@ a { color: inherit; text-decoration: none; }
 
 .no-results {
   font-family: var(--serif);
-  font-style: italic;
   font-size: 28px;
   color: var(--ink-faint);
   text-align: center;
