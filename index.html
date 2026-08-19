@@ -20,6 +20,7 @@
   --line: #e2e2e2;
   --accent: #1f1f1f;
   --accent-soft: #1f1f1f1a;
+  --title-color: #000000;
   --asilo: #1a5cff;
   --asilo-soft: rgba(26, 92, 255, 0.06);
 
@@ -74,6 +75,7 @@
   --line: #2c2c2c;
   --accent: #ededed;
   --accent-soft: #ededed1a;
+  --title-color: #ffffff;
   --asilo-soft: rgba(56, 120, 255, 0.16);
 }
 
@@ -159,6 +161,7 @@ a { color: inherit; text-decoration: none; }
   font-size: var(--title-h4);
   line-height: var(--title-h4-lh);
   letter-spacing: var(--title-h4-ls);
+  color: var(--title-color);
   margin-bottom: 40px;
 }
 
@@ -284,12 +287,13 @@ a { color: inherit; text-decoration: none; }
   font-size: var(--title-h4);
   line-height: var(--title-h4-lh);
   letter-spacing: var(--title-h4-ls);
+  color: var(--title-color);
   margin-bottom: 14px;
 }
 
 .intro h1 em {
   font-style: normal;
-  color: var(--accent);
+  color: inherit;
 }
 
 .intro p {
@@ -346,6 +350,7 @@ a { color: inherit; text-decoration: none; }
   font-size: var(--title-h5);
   line-height: var(--title-h5-lh);
   letter-spacing: var(--title-h5-ls);
+  color: var(--title-color);
 }
 
 .category-desc {
@@ -396,12 +401,12 @@ a { color: inherit; text-decoration: none; }
   font-size: var(--label-md);
   line-height: var(--label-md-lh);
   letter-spacing: var(--label-md-ls);
-  color: var(--ink);
+  color: var(--title-color);
   transition: color .15s;
 }
 
 .resource:hover .resource-name {
-  color: var(--accent);
+  color: var(--asilo);
 }
 
 .resource-desc {
