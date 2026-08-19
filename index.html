@@ -163,7 +163,7 @@ a { color: inherit; text-decoration: none; }
   border-bottom: 1px dashed transparent;
 }
 
-.nav li:hover { color: var(--ink); }
+.nav li:hover { color: var(--asilo); }
 
 .nav li.active {
   color: var(--accent);
@@ -357,18 +357,6 @@ a { color: inherit; text-decoration: none; }
   font-size: 10px;
   color: var(--ink-faint);
   letter-spacing: 0.02em;
-}
-
-.resource-tag {
-  font-family: var(--mono);
-  font-weight: 500;
-  font-size: 9px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 1px 6px;
-  border-radius: 3px;
-  background: var(--accent-soft);
-  color: var(--accent);
 }
 
 /* ---------- Empty state ---------- */
@@ -664,8 +652,6 @@ a { color: inherit; text-decoration: none; }
           <span class="footer-asilo-text">Asilo Digital<span class="dot">.</span></span>
         </span>
       </div>
-
-      <div class="footer-updated">Last updated · <span id="lastUpdated">2026</span></div>
     </footer>
 
   </main>
@@ -1169,7 +1155,6 @@ function renderCategories() {
               ${r.desc ? `<div class="resource-desc">${r.desc}</div>` : ''}
               <div class="resource-meta">
                 <span class="resource-host">↗ ${getHost(r.url)}</span>
-                ${r.tag ? `<span class="resource-tag">${r.tag}</span>` : ''}
               </div>
             </a>
           `).join('')}
@@ -1181,7 +1166,6 @@ function renderCategories() {
 function updateMeta() {
   const total = DATA.reduce((sum, cat) => sum + cat.resources.length, 0);
   $('#totalMeta').textContent = `${String(total).padStart(3, '0')} resources · ${DATA.length} categories`;
-  $('#lastUpdated').textContent = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   const yearEl = document.getElementById('footerYear');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
