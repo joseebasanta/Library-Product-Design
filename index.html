@@ -20,6 +20,7 @@
   --line: #e2e2e2;
   --accent: #1f1f1f;
   --accent-soft: #1f1f1f1a;
+  --asilo: #1a5cff;
   --serif: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   --sans: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
   --mono: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
@@ -433,9 +434,54 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-faint);
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 16px;
 }
+
+.footer-credit {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.footer-heart {
+  color: var(--asilo);
+  font-size: 12px;
+}
+
+.footer-asilo {
+  display: inline-flex;
+  align-items: center;
+}
+
+.footer-asilo img {
+  height: 18px;
+  width: auto;
+  display: block;
+}
+
+/* Show the right logo per theme */
+.footer-asilo .asilo-dark { display: none; }
+[data-theme="dark"] .footer-asilo .asilo-light { display: none; }
+[data-theme="dark"] .footer-asilo .asilo-dark { display: block; }
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .footer-asilo .asilo-light { display: none; }
+  :root:not([data-theme="light"]) .footer-asilo .asilo-dark { display: block; }
+}
+
+/* Fallback wordmark if logo images not yet added */
+.footer-asilo-text {
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.footer-asilo-text .dot { color: var(--asilo); }
 
 /* ---------- Scrollbar polish ---------- */
 
@@ -541,7 +587,16 @@ a { color: inherit; text-decoration: none; }
     <div id="categoriesContainer"></div>
 
     <footer class="footer">
-      <div>© Jose · Personal library</div>
+      <div class="footer-credit">
+        Made with <span class="footer-heart">&#9829;</span> by
+        <span class="footer-asilo">
+          <!-- Logo images go here once added to the repo:
+          <img class="asilo-light" src="asilo-black.png" alt="Asilo Digital" />
+          <img class="asilo-dark" src="asilo-white.png" alt="Asilo Digital" />
+          -->
+          <span class="footer-asilo-text">Asilo Digital<span class="dot">.</span></span>
+        </span>
+      </div>
       <div>Last updated · <span id="lastUpdated">2026</span></div>
     </footer>
 
