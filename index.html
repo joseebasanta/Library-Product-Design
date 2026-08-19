@@ -465,8 +465,8 @@ a { color: inherit; text-decoration: none; }
 
 .footer-avatar {
   position: relative;
-  width: 22px;
-  height: 22px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
@@ -482,16 +482,8 @@ a { color: inherit; text-decoration: none; }
   transition: opacity .18s ease;
 }
 
-.curator-photo {
-  background: var(--asilo);
-  color: #fff;
-  font-family: var(--sans);
-  font-size: 8.5px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-}
-
-.curator-photo img {
+.curator-photo img,
+.curator-photo .curator-icon {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -628,9 +620,12 @@ a { color: inherit; text-decoration: none; }
         <span class="footer-curated-by">Curated by</span>
         <span class="footer-avatar">
           <span class="curator-photo">
-            <!-- Swap in Jose's photo once added to the repo:
+            <!-- Swap in a photo instead of the icon anytime:
             <img src="jose-basanta.jpg" alt="Jose Basanta" /> -->
-            JB
+            <svg class="curator-icon" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="250" cy="250" r="250" fill="#0066FF"/>
+              <path d="M200.001 316.672H300.001V333.339H200.001V316.672ZM200.001 166.672H300.001V183.339H200.001V166.672ZM300.001 183.339H316.668V200.005H300.001V183.339ZM183.335 183.339H200.001V200.005H183.335V183.339ZM183.335 300.005H200.001V316.672H183.335V300.005ZM300.001 300.005H316.668V316.672H300.001V300.005ZM166.668 200.005H183.335V300.005H166.668V200.005ZM316.668 200.005H333.335V300.005H316.668V200.005ZM208.335 258.339H225.001V275.005H208.335V258.339ZM225.001 275.005H275.001V291.672H225.001V275.005ZM275.001 258.339H291.668V275.005H275.001V258.339ZM216.668 216.672H233.335V233.339H216.668V216.672ZM266.668 216.672H283.335V233.339H266.668V216.672Z" fill="white"/>
+            </svg>
           </span>
           <span class="curator-linkicon" aria-hidden="true">
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
