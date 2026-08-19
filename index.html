@@ -451,6 +451,86 @@ a { color: inherit; text-decoration: none; }
 }
 .footer-asilo-text .dot { color: var(--asilo); }
 
+/* ---------- Footer curator ---------- */
+
+.footer-curator {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.footer-copy {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.footer-curated-by { color: var(--ink-soft); }
+
+.footer-avatar {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.curator-photo,
+.curator-linkicon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .18s ease;
+}
+
+.curator-photo {
+  background: var(--asilo);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.curator-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.curator-linkicon {
+  opacity: 0;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.footer-curator-name {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+  transition: text-decoration-color .15s, color .15s;
+}
+
+.footer-curator:hover .curator-photo { opacity: 0; }
+.footer-curator:hover .curator-linkicon { opacity: 1; }
+.footer-curator:hover .footer-curator-name { text-decoration-color: var(--ink-faint); }
+
+.footer-updated { white-space: nowrap; }
+
 /* ---------- Scrollbar polish ---------- */
 
 .sidebar::-webkit-scrollbar { width: 6px; }
@@ -555,6 +635,25 @@ a { color: inherit; text-decoration: none; }
     <div id="categoriesContainer"></div>
 
     <footer class="footer">
+      <a class="footer-curator" href="https://www.linkedin.com/in/jose-basanta-544052211/" target="_blank" rel="noopener">
+        <span class="footer-copy">© <span id="footerYear">2026</span></span>
+        <span class="footer-curated-by">Curated by</span>
+        <span class="footer-avatar">
+          <span class="curator-photo">
+            <!-- Swap in Jose's photo once added to the repo:
+            <img src="jose-basanta.jpg" alt="Jose Basanta" /> -->
+            JB
+          </span>
+          <span class="curator-linkicon" aria-hidden="true">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17 17 7"/>
+              <path d="M8 7h9v9"/>
+            </svg>
+          </span>
+        </span>
+        <span class="footer-curator-name">Jose Basanta</span>
+      </a>
+
       <div class="footer-credit">
         Made with <span class="footer-heart">&#9829;</span> by
         <span class="footer-asilo">
@@ -565,7 +664,8 @@ a { color: inherit; text-decoration: none; }
           <span class="footer-asilo-text">Asilo Digital<span class="dot">.</span></span>
         </span>
       </div>
-      <div>Last updated · <span id="lastUpdated">2026</span></div>
+
+      <div class="footer-updated">Last updated · <span id="lastUpdated">2026</span></div>
     </footer>
 
   </main>
@@ -1082,6 +1182,8 @@ function updateMeta() {
   const total = DATA.reduce((sum, cat) => sum + cat.resources.length, 0);
   $('#totalMeta').textContent = `${String(total).padStart(3, '0')} resources · ${DATA.length} categories`;
   $('#lastUpdated').textContent = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  const yearEl = document.getElementById('footerYear');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 }
 
 /* ---------- Search ---------- */
